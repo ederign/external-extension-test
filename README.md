@@ -1,7 +1,1 @@
-Kogito Tooling Examples
---
-
-Example packages showing how to use `@kogito-tooling/*` packages APIs.
-
-### Build
-`yarn run init && yarn run build:prod`
+ode  --enable-proposed-api kogito-tooling-examples.vscode-extension-pack-simple-react packages/vscode-extension-pack-simple-react
