@@ -3,10 +3,11 @@
   "displayName": "KIE :: Kogito Simple React Editor",
   "description": "",
   "main": "./dist/extension/extension.js",
-  "version": "0.2.2",
+  "enableProposedApi": true,
+  "version": "0.4.2",
   "license": "Apache-2.0",
   "engines": {
-    "vscode": "^1.33.0"
+    "vscode": "^1.45.0"
   },
   "repository": {
     "type": "git",
@@ -16,10 +17,27 @@
     "Other"
   ],
   "activationEvents": [
-    "*"
+    "onCustomEditor:kieKogitoWebviewEditors"
   ],
   "publisher": "kogito-tooling-examples",
   "contributes": {
+    "customEditors": [
+      {
+        "viewType": "kieKogitoWebviewEditors",
+        "displayName": "KIE Kogito Editors",
+        "selector": [
+          {
+            "filenamePattern": "*.{txt}"
+          }
+        ]
+      }
+    ],
+    "commands": [
+      {
+        "command": "extension.kogito.getPreviewSvg",
+        "title": "Get Editor Preview SVG"
+      }
+    ],
     "languages": [
       {
         "id": "txt",
@@ -27,8 +45,7 @@
           ".txt"
         ],
         "aliases": [
-          "txt",
-          "Text"
+          "txt"
         ]
       }
     ]
@@ -42,26 +59,65 @@
     "build:prod": "yarn run build --mode production --devtool none && yarn run pack-extension"
   },
   "devDependencies": {
+    "@babel/core": "7.7.2",
+    "@babel/preset-env": "7.7.1",
+    "@babel/preset-react": "7.7.0",
+    "@testing-library/jest-dom": "5.3.0",
+    "@testing-library/react": "^10.0.2",
+    "@types/enzyme": "3.10.0",
+    "@types/glob": "7.1.1",
+    "@types/jest": "^25.1.5",
     "@types/mocha": "5.2.7",
-    "@types/node": "10.12.21",
-    "@types/vscode": "^1.33.0",
-    "babel-core": "6.26.3",
-    "babel-loader": "7.1.5",
-    "babel-preset-env": "1.7.0",
-    "babel-preset-react": "6.24.1",
+    "@types/node": "12.12.5",
+    "@types/react": "16.8.8",
+    "@types/react-dom": "16.8.2",
+    "@types/vscode": "1.39",
+    "babel-loader": "8.0.6",
+    "circular-dependency-plugin": "5.2.0",
+    "copy-webpack-plugin": "5.1.0",
+    "css-loader": "3.2.0",
+    "enzyme": "3.10.0",
+    "enzyme-adapter-react-16": "1.15.1",
+    "enzyme-to-json": "3.4.3",
+    "file-loader": "4.2.0",
+    "glob": "7.1.4",
+    "jest": "^25.2.7",
+    "jest-junit": "9.0.0",
+    "jest-webextension-mock": "^3.5.0",
+    "lerna": "3.18.3",
     "mocha": "6.1.4",
-    "ts-jest": "23.1.3",
-    "ts-loader": "4.4.2",
+    "mocha-jenkins-reporter": "0.4.2",
+    "node-sass": "4.12.0",
+    "null-loader": "3.0.0",
+    "prettier": "1.19.1",
+    "sass-loader": "7.3.1",
+    "string-replace-loader": "2.2.0",
+    "style-loader": "1.0.0",
+    "ts-jest": "^25.3.1",
+    "ts-loader": "6.2.1",
     "tslint": "5.12.1",
-    "typescript": "3.3.1",
+    "tslint-config-prettier": "1.15.0",
+    "tslint-react": "3.6.0",
+    "typescript": "3.8.3",
+    "url-loader": "4.0.0",
     "vsce": "1.59.0",
     "vscode-test": "1.0.0",
-    "webpack": "4.15.1",
-    "webpack-cli": "3.0.8"
+    "watch": "1.0.2",
+    "webpack": "4.41.2",
+    "webpack-cli": "3.3.10",
+    "webpack-dev-server": "3.9.0",
+    "webpack-node-externals": "1.7.2",
+    "zip-webpack-plugin": "3.0.0",
+    "@types/react-router": "5.1.1",
+    "@types/react-router-dom": "5.1.1",
+    "electron-packager": "14.2.0",
+    "electron-rebuild": "1.10.0",
+    "run-script-os": "1.1.1",
+    "cross-var": "1.1.0"
   },
   "dependencies": {
-    "@kogito-tooling/microeditor-envelope": "0.2.2",
-    "@kogito-tooling/vscode-extension": "0.2.2",
-    "simple-react-editors": "0.2.2"
+    "@kogito-tooling/microeditor-envelope": "0.4.2",
+    "@kogito-tooling/vscode-extension": "0.4.2",
+    "simple-react-editors": "0.4.2"
   }
 }

@@ -16,6 +16,7 @@
 
 import * as MicroEditorEnvelope from "@kogito-tooling/microeditor-envelope";
 import { SimpleReactEditorsFactory } from "simple-react-editors";
+import { ChannelType } from "@kogito-tooling/core-api";
 
 declare global {
   export const acquireVsCodeApi: any;
@@ -24,5 +25,6 @@ declare global {
 MicroEditorEnvelope.init({
   container: document.getElementById("envelope-app")!,
   busApi: acquireVsCodeApi(),
-  editorFactory: new SimpleReactEditorsFactory()
+  editorFactory: new SimpleReactEditorsFactory(),
+  editorContext: { channel: ChannelType.VSCODE }
 });

@@ -34,11 +34,18 @@ export class SimpleReactEditorInterface extends Editor {
     return this.self.getContent();
   }
 
+  public getPreview(): Promise<string> {
+    return new Promise<string>((resolve) => {
+      resolve("Write your own preview");
+  });
+    
+  }
+
   public isDirty(): boolean {
     return this.self.isDirty();
   }
 
-  public setContent(content: string): Promise<void> {
+  public setContent(path: string, content: string ): Promise<void> {
     return this.self.setContent(content);
   }
 

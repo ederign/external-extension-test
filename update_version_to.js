@@ -19,7 +19,7 @@ const exec = util.promisify(require("child_process").exec);
 const prettier = require("prettier");
 
 const LERNA_JSON = "./lerna.json";
-const CHROME_EXTENSION_MANIFEST_JSON = "./packages/chrome-extension-pack-simple-react/static/manifest.json";
+//const CHROME_EXTENSION_MANIFEST_JSON = "./packages/chrome-extension-pack-simple-react/static/manifest.json";
 //
 
 async function updatePackages(lernaVersionArg) {
@@ -27,14 +27,14 @@ async function updatePackages(lernaVersionArg) {
   return require(LERNA_JSON).version;
 }
 
-async function updateChromeExtensionManifest(version) {
-  const manifest = require(CHROME_EXTENSION_MANIFEST_JSON);
-  manifest.version = version;
+// async function updateChromeExtensionManifest(version) {
+//   const manifest = require(CHROME_EXTENSION_MANIFEST_JSON);
+//   manifest.version = version;
 
-  const formattedManifest = prettier.format(JSON.stringify(manifest), { parser: "json" });
-  fs.writeFileSync(CHROME_EXTENSION_MANIFEST_JSON, formattedManifest);
-  return version;
-}
+//   const formattedManifest = prettier.format(JSON.stringify(manifest), { parser: "json" });
+//   fs.writeFileSync(CHROME_EXTENSION_MANIFEST_JSON, formattedManifest);
+//   return version;
+// }
 
 // MAIN
 
@@ -50,7 +50,7 @@ function red(str) {
 
 Promise.resolve()
   .then(() => updatePackages(lernaVersionArg))
-  .then(version => updateChromeExtensionManifest(version))
+  // .then(version => updateChromeExtensionManifest(version))
   .then(version => {
     console.error("");
     console.info(`Updated to '${version}'.`);

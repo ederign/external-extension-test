@@ -42,6 +42,7 @@ export class SimpleReactEditor extends React.Component<Props, State> {
   }
 
   public setContent(content: string) {
+    console.log("set content");
     return new Promise<void>(res => this.setState({ originalContent: content }, res)).then(() =>
       this.updateContent(content)
     );
@@ -58,6 +59,7 @@ export class SimpleReactEditor extends React.Component<Props, State> {
 
   //saving triggers this method, so we also update the originalContent by calling `this.setContent`
   public getContent() {
+    console.log("get content");
     return this.setContent(this.state.content).then(() => this.state.content);
   }
 

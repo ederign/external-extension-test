@@ -20,15 +20,21 @@ import { DefaultVsCodeRouter } from "@kogito-tooling/vscode-extension";
 import { SimpleReactEditorsRoutes } from "simple-react-editors";
 
 export function activate(context: vscode.ExtensionContext) {
-  console.info("Extension is alive.");
+  console.info("Extension is alive2.");
 
-  KogitoVsCode.startExtension({
+  try {
+     KogitoVsCode.startExtension({
     extensionName: "kogito-tooling-examples.vscode-extension-pack-simple-react",
     webviewLocation: "dist/webview/index.js",
     context: context,
+    viewType: "kieKogitoWebviewEditors",
+    getPreviewCommandId: "extension.kogito.getPreviewSvg",
     router: new DefaultVsCodeRouter(context, new SimpleReactEditorsRoutes())
   });
-
+  }
+  catch (ex) {
+    console.error("outer", ex.message);
+  }
   console.info("Extension is successfully setup.");
 }
 
